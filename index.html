@@ -1,1 +1,335 @@
-<h1>Hola </h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de Git - Control de Versiones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            backdrop-filter: blur(2px);
+        }
+        h1 {
+            color: #1e2a3a;
+            border-left: 8px solid #2c3e50;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+        }
+        h1 small {
+            font-size: 0.8rem;
+            color: #5d6d7e;
+            display: block;
+            margin-top: 5px;
+        }
+        h2 {
+            color: #1e2a3a;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+        }
+        .badge {
+            background: #2c3e50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .grid-ventajas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+        .card .emoji {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e2a3a;
+        }
+        .comando-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .comando-box code {
+            background: none;
+            color: #facc15;
+            font-size: 0.95rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+        }
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            background: white;
+        }
+        tr:nth-child(even) td {
+            background: #f9fafb;
+        }
+        code {
+            background: #edf2f7;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: #c7254e;
+            font-size: 0.9rem;
+        }
+        .tip {
+            background: #e6f7ff;
+            border-left: 5px solid #1890ff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fff7e6;
+            border-left: 5px solid #fa8c16;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .conflicto-demo {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        button {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #1a2632;
+            transform: scale(1.02);
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #5d6d7e;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 25px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 20px;
+            }
+            h1 { font-size: 1.8rem; }
+            td, th { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 Guía Completa de Git & GitHub <small>Control de versiones profesional</small></h1>
+    <p>Git es el sistema de control de versiones más usado del mundo. Te permite guardar "instantáneas" de tu proyecto, colaborar sin miedo y viajar en el tiempo entre cambios.</p>
+
+    <!-- ========== VENTAJAS ========= -->
+    <h2>✅ Ventajas clave</h2>
+    <div class="grid-ventajas">
+        <div class="card"><div class="emoji">📜</div><h4>Historial completo</h4><p>Cada cambio queda registrado: quién, cuándo y por qué. Puedes volver a cualquier versión anterior.</p></div>
+        <div class="card"><div class="emoji">👥</div><h4>Trabajo en equipo</h4><p>Varios desarrolladores pueden trabajar en paralelo sin pisarse. Las ramas y merges son súper eficientes.</p></div>
+        <div class="card"><div class="emoji">☁️</div><h4>Respaldo en la nube</h4><p>GitHub, GitLab o Bitbucket guardan tu código de forma segura. Accede desde cualquier PC.</p></div>
+        <div class="card"><div class="emoji">🐙</div><h4>Ramas (branches)</h4><p>Experimenta sin miedo: crea ramas para nuevas funcionalidades, haz pruebas y fusiónalas cuando estén listas.</p></div>
+        <div class="card"><div class="emoji">⚡</div><h4>Rendimiento local</h4><p>La mayoría de operaciones son locales (no requieren internet) y son muy rápidas.</p></div>
+        <div class="card"><div class="emoji">🔍</div><h4>Depuración</h4><p>Comandos como <code>git blame</code> o <code>git bisect</code> te ayudan a encontrar el origen de errores.</p></div>
+    </div>
+
+    <!-- ========== COMANDOS BÁSICOS ESENCIALES ========= -->
+    <h2>⚙️ Comandos básicos (indispensables)</h2>
+    <div class="tip">💡 <strong>Consejo oro:</strong> Siempre ejecuta <code>git status</code> antes y después de cada operación. Te dice exactamente qué hacer.</div>
+    <table>
+        <thead><tr><th>Comando</th><th>¿Qué hace?</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+            <tr><td><code>git init</code></td><td>Inicia un repositorio vacío en la carpeta actual</td><td><code>git init</code></td></tr>
+            <tr><td><code>git status</code></td><td>Muestra archivos modificados, en staging y sin seguimiento</td><td><code>git status</code></td></tr>
+            <tr><td><code>git add .</code></td><td>Agrega <strong>todos</strong> los cambios al área de staging</td><td><code>git add .</code></td></tr>
+            <tr><td><code>git commit -m "mensaje"</code></td><td>Guarda una nueva versión (foto) con un mensaje descriptivo</td><td><code>git commit -m "Fix: corregido error en login"</code></td></tr>
+            <tr><td><code>git log --oneline</code></td><td>Muestra historial de commits resumido (id y mensaje)</td><td><code>git log --oneline --graph</code></td></tr>
+            <tr><td><code>git push</code></td><td>Sube tus commits locales al repositorio remoto (GitHub)</td><td><code>git push origin master</code></td></tr>
+            <tr><td><code>git pull</code></td><td>Descarga los cambios del remoto y los fusiona</td><td><code>git pull origin master</code></td></tr>
+        </tbody>
+    </table>
+
+    <!-- ========== TRABAJO CON RAMAS ========= -->
+    <h2>🌿 Trabajo con ramas (branches)</h2>
+    <p>Las ramas te permiten desarrollar funcionalidades aisladas sin afectar la versión estable (normalmente <code>master/main</code>).</p>
+    <table>
+        <thead><tr><th>Comando</th><th>Descripción</th></tr></thead>
+        <tbody>
+            <tr><td><code>git branch</code></td><td>Lista las ramas locales. La actual aparece con *</td></tr>
+            <tr><td><code>git branch nueva-rama</code></td><td>Crea una nueva rama</td></tr>
+            <tr><td><code>git checkout nombre-rama</code></td><td>Cambia a esa rama</td></tr>
+            <tr><td><code>git checkout -b rama</code></td><td>Crea y cambia a la nueva rama en un paso</td></tr>
+            <tr><td><code>git merge rama</code></td><td>Fusiona la rama indicada en la rama actual</td></tr>
+            <tr><td><code>git branch -d rama</code></td><td>Elimina una rama (solo si ya se fusionó)</td></tr>
+        </tbody>
+    </table>
+    <div class="comando-box">
+        <code># Ejemplo práctico de ramas<br>
+        git checkout -b feature/login<br>
+        # ... haces cambios, commits ...<br>
+        git checkout master<br>
+        git merge feature/login<br>
+        git push origin master</code>
+    </div>
+
+    <!-- ========== RESOLUCIÓN DE CONFLICTOS ========= -->
+    <h2>💥 Cómo resolver conflictos</h2>
+    <p>Un conflicto ocurre cuando dos ramas modifican la misma línea del mismo archivo. Git te pide que decidas manualmente qué versión conservar.</p>
+    <div class="conflicto-demo">
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>
+        Cambio hecho en la rama master<br>
+        =======<br>
+        Cambio hecho en la rama feature-1<br>
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-1
+    </div>
+    <div class="tip">
+        <strong>🔧 Resolución típica:</strong><br>
+        1. Abre el archivo conflictivo.<br>
+        2. Elimina las marcas <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.<br>
+        3. Deja el código final que quieras.<br>
+        4. Guarda, haz <code>git add archivo</code> y luego <code>git commit -m "resolver conflicto"</code>.
+    </div>
+
+    <!-- ========== COMANDOS AVANZADOS ========= -->
+    <h2>🚀 Comandos avanzados (te harán ver pro)</h2>
+    <table>
+        <thead><tr><th>Comando</th><th>Uso</th></tr></thead>
+        <tbody>
+            <tr><td><code>git stash</code></td><td>Guarda cambios temporales sin hacer commit (útil para cambiar de rama rápido)</td></tr>
+            <tr><td><code>git stash pop</code></td><td>Recupera los últimos cambios guardados en stash</td></tr>
+            <tr><td><code>git reset --soft HEAD~1</code></td><td>Deshace el último commit pero mantiene los cambios en staging</td></tr>
+            <tr><td><code>git reset --hard HEAD~1</code></td><td>⚠️ Deshace el último commit y elimina los cambios (¡cuidado!)</td></tr>
+            <tr><td><code>git rebase master</code></td><td>Reorganiza la historia para una línea más limpia (evita merges innecesarios)</td></tr>
+            <tr><td><code>git cherry-pick commitID</code></td><td>Aplica un commit específico de otra rama a la actual</td></tr>
+            <tr><td><code>git reflog</code></td><td>Registro de movimientos de HEAD (recupera commits "perdidos")</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ========== FLUJO DE TRABAJO RECOMENDADO ========= -->
+    <h2>🔄 Flujo diario (el ciclo de vida)</h2>
+    <div class="comando-box">
+        <code>1. git pull origin master        # bajar últimos cambios del equipo<br>
+        2. # ... editas archivos, programas ...<br>
+        3. git add .                         # preparar cambios<br>
+        4. git commit -m "feat: nueva funcionalidad"<br>
+        5. git push origin master            # compartir tu trabajo</code>
+    </div>
+    <div class="warning">
+        ⚠️ <strong>Error común:</strong> Hacer <code>git init</code> dentro de <code>C:\Users\tu_usuario</code>. Eso intenta versionar toda tu PC. <strong>Siempre</strong> crea una carpeta dedicada (<code>mkdir proyecto && cd proyecto && git init</code>).
+    </div>
+
+    <!-- ========== ISSUES Y PULL REQUESTS ========= -->
+    <h2>🐙 GitHub: Issues y Pull Requests</h2>
+    <p><strong>Issues</strong> son tareas, errores o mejoras. <strong>Pull Requests (PR)</strong> son propuestas de cambios que se fusionan mediante revisión.</p>
+    <ul>
+        <li>Crear un Issue: en GitHub → pestaña "Issues" → New issue → describir y asignar número (ej: #1).</li>
+        <li>Crear un PR relacionado: creas una rama, haces commits, luego push y en GitHub pulsas "Pull request" → en el cuerpo escribes <code>Closes #1</code>.</li>
+        <li>Si el PR se fusiona (merge), el Issue se cierra automáticamente.</li>
+    </ul>
+    <div class="tip">
+        📌 <strong>Ejemplo de PR que cierra un Issue:</strong><br>
+        Título: "Implementar autenticación"<br>
+        Descripción: "Closes #12 - Agrega login con JWT"
+    </div>
+
+    <!-- ========== PRUEBA RÁPIDA / EJERCICIOS ========= -->
+    <h2>📝 Prueba rápida: ¿Sabes usar Git?</h2>
+    <div id="quiz" style="background:#f1f5f9; border-radius:20px; padding:20px; margin:20px 0;">
+        <p><strong>1️⃣</strong> ¿Qué comando usas para ver el estado actual de tus archivos?</p>
+        <button onclick="alert('Respuesta: git status')">Ver respuesta</button>
+        <p><strong>2️⃣</strong> ¿Cómo creas una nueva rama llamada "feature-x" y cambias a ella en un solo comando?</p>
+        <button onclick="alert('Respuesta: git checkout -b feature-x')">Ver respuesta</button>
+        <p><strong>3️⃣</strong> ¿Qué significa "Closes #5" en un Pull Request?</p>
+        <button onclick="alert('Respuesta: Significa que al fusionar el PR, se cerrará automáticamente el Issue número 5')">Ver respuesta</button>
+        <p><strong>4️⃣</strong> ¿Cuál es el comando para subir tus commits al repositorio remoto?</p>
+        <button onclick="alert('Respuesta: git push')">Ver respuesta</button>
+    </div>
+
+    <!-- ========== CHEATSHEET FINAL ========= -->
+    <h2>📌 Chuleta rápida (para tener siempre a mano)</h2>
+    <div class="comando-box">
+        <code>
+        git init        # empezar repo nuevo<br>
+        git status      # ¿qué pasó?<br>
+        git add .       # preparar todo<br>
+        git commit -m "mensaje"<br>
+        git push        # subir a GitHub<br>
+        git pull        # bajar cambios<br>
+        git log --oneline --graph   # historial bonito<br>
+        git branch      # ver ramas<br>
+        git checkout -b nueva-rama  # crear y cambiarse
+        </code>
+    </div>
+
+    <footer>
+        🌟 Creado para el examen de Git - Control de versiones | <strong>Recuerda: ¡Practica cada comando!</strong> 🌟
+    </footer>
+</div>
+</body>
+</html>
